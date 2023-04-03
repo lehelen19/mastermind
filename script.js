@@ -57,7 +57,7 @@ function generateCode() {
     const randInt = Math.floor(Math.random() * 6);
     code.push(randInt);
   }
-  return code;
+  return { ...code };
 }
 
 function handleGuessSubmit() {
@@ -66,6 +66,28 @@ function handleGuessSubmit() {
     return;
   }
   // Interpret guess here
-  let numCorrect = 0;
-  let numNearlyCorrect = 0;
+  console.log(curGuess);
+  let codeCopy = { ...code };
+  let exactMatch = 0;
+  let closeMatch = 0;
+  console.log(codeCopy);
+  curGuess.forEach(function (guess, i) {
+    if (guess === codeCopy[i]) {
+      exactMatch += 1;
+      curGuess[i] = -1;
+      codeCopy[i] = -1;
+    }
+  });
+  curGuess.forEach(function (guess) {
+    if (guess > -1) {
+      if (guess in codeCopy) {
+        closeMatch += 1;
+      }
+    }
+  });
+  console.log(exactMatch);
+  console.log(closeMatch);
+
+  // Reset guess
+  // curGuess = [];
 }
