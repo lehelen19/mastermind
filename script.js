@@ -89,7 +89,7 @@ function handleGuessSubmit() {
   });
 
   // TODO: Render new guess + new miniboard
-  renderMiniBoard(exactMatch, closeMatch);
+  renderMiniboard(exactMatch, closeMatch);
 
   // Reset guess
   curGuess = [];
