@@ -1,4 +1,5 @@
 /*----- constants -----*/
+const choices = [0, 1, 2, 3, 4, 5];
 
 /*----- state variables -----*/
 let turn;
@@ -6,8 +7,15 @@ let winner;
 let board;
 
 /*----- cached elements  -----*/
+const choiceContainerEl = document.getElementById('choice-container');
 
 /*----- event listeners -----*/
+choiceContainerEl.addEventListener('click', function (e) {
+  if (e.target.id) {
+    return;
+  }
+  console.log('clicked');
+});
 
 /*----- functions -----*/
 init();
