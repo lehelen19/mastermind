@@ -1,6 +1,14 @@
 /*----- constants -----*/
 const CHOICES = [0, 1, 2, 3, 4, 5];
 const GUESS_LEN = 4;
+const COLORS_MAP = {
+  0: 'pink',
+  1: 'lightgreen',
+  2: 'lightblue',
+  3: 'palevioletred',
+  4: 'blueviolet',
+  5: 'yellow',
+};
 
 /*----- state variables -----*/
 let turn;
@@ -13,6 +21,9 @@ let code;
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
+const guessContainerEls = [
+  ...document.querySelectorAll('.guess-container > div.colors-container > div'),
+];
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
@@ -25,21 +36,18 @@ choiceContainerEl.addEventListener('click', function (e) {
   if (curGuess.length < GUESS_LEN) {
     curGuess.push(Number(e.target.dataset.index));
   }
-  console.log(curGuess);
 });
 
 deleteBtn.addEventListener('click', function (e) {
   if (curGuess.length > 0) {
     curGuess.pop();
   }
-  console.log(curGuess);
 });
 
 clearBtn.addEventListener('click', function () {
   if (curGuess.length > 0) {
     curGuess = [];
   }
-  console.log(curGuess);
 });
 
 submitBtn.addEventListener('click', handleGuessSubmit);
@@ -69,18 +77,19 @@ function handleGuessSubmit() {
   }
   // Interpret guess here
   let codeCopy = { ...code };
+  let curGuessCopy = [...curGuess];
   let exactMatch = 0;
   let closeMatch = 0;
 
-  curGuess.forEach(function (guess, i) {
+  curGuessCopy.forEach(function (guess, i) {
     if (guess === codeCopy[i]) {
       exactMatch += 1;
-      curGuess[i] = -1;
+      curGuessCopy[i] = -1;
       codeCopy[i] = -1;
     }
   });
 
-  curGuess.forEach(function (guess) {
+  curGuessCopy.forEach(function (guess) {
     if (guess > -1) {
       if (Object.values(codeCopy).includes(guess)) {
         closeMatch += 1;
@@ -89,13 +98,19 @@ function handleGuessSubmit() {
   });
 
   // TODO: Render new guess + new miniboard
-  renderMiniboard(exactMatch, closeMatch);
+  renderGuess(exactMatch, closeMatch);
 
   // Reset guess
   curGuess = [];
 }
 
-function renderMiniboard(exactCount, closeCount) {
+function renderGuess(exactCount, closeCount) {
+  // TODO: Render guess
+  guessContainerEls.forEach(function (guess, i) {
+    guess.style.backgroundColor = COLORS_MAP[curGuess[i]];
+  });
+
+  // Render miniboard
   for (let i = 0; i < exactCount; i++) {
     miniboardEls[i].style.backgroundColor = 'green';
   }
