@@ -112,11 +112,14 @@ function handleGuessSubmit() {
   turn += 1;
   renderTurn();
 
-  // CHECK FOR WIN CONDITION
+  // TODO: Render win/loss message
+  // CHECK FOR WIN/LOSS CONDITION
+  // TODO: Disable further guesses if either condition is met
   if (exactMatch === GUESS_LEN) {
-    // TODO: Render win message
     console.log('You have won!');
-    // TODO: Disable further guesses
+  } else if (turn === 12) {
+    // CHECK FOR LOSS CONDITION
+    console.log('You have lost.');
   }
 
   // Clear player guess
