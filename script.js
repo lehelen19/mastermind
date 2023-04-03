@@ -1,6 +1,9 @@
 /*----- constants -----*/
 
 /*----- state variables -----*/
+let turn;
+let winner;
+let board;
 
 /*----- cached elements  -----*/
 
