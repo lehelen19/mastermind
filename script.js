@@ -21,7 +21,7 @@ choiceContainerEl.addEventListener('click', function (e) {
     return;
   }
   if (curGuess.length < 6) {
-    curGuess.push(e.target.dataset.index);
+    curGuess.push(Number(e.target.dataset.index));
   }
   console.log(curGuess);
 });
