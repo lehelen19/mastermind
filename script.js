@@ -32,6 +32,13 @@ deleteBtn.addEventListener('click', function (e) {
   console.log(curGuess);
 });
 
+clearBtn.addEventListener('click', function () {
+  if (curGuess.length > 0) {
+    curGuess = [];
+  }
+  console.log(curGuess);
+});
+
 /*----- functions -----*/
 init();
 function init() {
