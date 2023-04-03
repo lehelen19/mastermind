@@ -12,6 +12,7 @@ let code;
 /*----- cached elements  -----*/
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
+const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
@@ -62,6 +63,7 @@ function generateCode() {
 
 function handleGuessSubmit() {
   if (curGuess.length !== GUESS_LEN) {
+    // TODO: Render user error message to screen
     console.log('GUESS IS NOT COMPLETE.');
     return;
   }
@@ -69,7 +71,7 @@ function handleGuessSubmit() {
   let codeCopy = { ...code };
   let exactMatch = 0;
   let closeMatch = 0;
-  console.log(codeCopy);
+
   curGuess.forEach(function (guess, i) {
     if (guess === codeCopy[i]) {
       exactMatch += 1;
@@ -77,8 +79,7 @@ function handleGuessSubmit() {
       codeCopy[i] = -1;
     }
   });
-  console.log('after', codeCopy);
-  console.log('after', curGuess);
+
   curGuess.forEach(function (guess) {
     if (guess > -1) {
       if (Object.values(codeCopy).includes(guess)) {
@@ -86,9 +87,19 @@ function handleGuessSubmit() {
       }
     }
   });
-  console.log('exact', exactMatch);
-  console.log('close', closeMatch);
+
+  // TODO: Render new guess + new miniboard
+  renderMiniBoard(exactMatch, closeMatch);
 
   // Reset guess
   curGuess = [];
+}
+
+function renderMiniboard(exactCount, closeCount) {
+  for (let i = 0; i < exactCount; i++) {
+    miniboardEls[i].style.backgroundColor = 'green';
+  }
+  for (let j = exactCount; j < closeCount; j++) {
+    miniboardEls[j].style.backgroundColor = 'yellow';
+  }
 }
