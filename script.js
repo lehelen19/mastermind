@@ -10,6 +10,9 @@ let curGuess;
 /*----- cached elements  -----*/
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
+const deleteBtn = document.getElementById('delete-btn');
+const clearBtn = document.getElementById('clear-btn');
+const submitBtn = document.getElementById('submit-btn');
 
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', function (e) {
