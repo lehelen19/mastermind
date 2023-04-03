@@ -19,6 +19,7 @@ let code;
 
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
+const curGuessEl = [...document.querySelectorAll('#player-guess > div')];
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
@@ -31,11 +32,12 @@ const submitBtn = document.getElementById('submit-btn');
 
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', function (e) {
-  if (e.target.id) {
+  if (e.target.id || curGuess.length === GUESS_LEN) {
     return;
   }
   if (curGuess.length < GUESS_LEN) {
     curGuess.push(Number(e.target.dataset.index));
+    renderCurGuess();
   }
 });
 
@@ -76,6 +78,7 @@ function handleGuessSubmit() {
     console.log('GUESS IS NOT COMPLETE.');
     return;
   }
+
   // Interpret guess here
   let codeCopy = { ...code };
   let curGuessCopy = [...curGuess];
@@ -98,7 +101,6 @@ function handleGuessSubmit() {
     }
   });
 
-  // TODO: Render new guess + new miniboard
   renderGuess(exactMatch, closeMatch);
 
   // Reset guess
@@ -134,4 +136,13 @@ function renderGuess(exactCount, closeCount) {
   guessContainerDiv.appendChild(miniboardDiv);
 
   gameboardEl.appendChild(guessContainerDiv);
+}
+
+function renderCurGuess() {
+  console.log('rendering');
+  curGuess.forEach(function (guess, i) {
+    console.log(curGuessEl);
+    console.log(curGuess);
+    curGuessEl[i].style.backgroundColor = COLORS_MAP[guess];
+  });
 }
