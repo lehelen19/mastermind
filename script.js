@@ -19,6 +19,7 @@ let code;
 
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
+const turnEl = document.getElementById('turn');
 const curGuessEls = [...document.querySelectorAll('#player-guess > div')];
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
@@ -60,9 +61,12 @@ submitBtn.addEventListener('click', handleGuessSubmit);
 /*----- functions -----*/
 init();
 function init() {
-  console.log('Game initialized.');
+  turn = 1;
   curGuess = [];
   code = generateCode();
+  renderTurn();
+
+  console.log('Game initialized.');
 }
 
 function generateCode() {
@@ -104,6 +108,9 @@ function handleGuessSubmit() {
   });
 
   renderGuess(exactMatch, closeMatch);
+
+  turn += 1;
+  renderTurn();
 
   // CHECK FOR WIN CONDITION
   if (exactMatch === GUESS_LEN) {
@@ -155,4 +162,8 @@ function renderCurGuess() {
   curGuess.forEach(function (guess, i) {
     curGuessEls[i].style.backgroundColor = COLORS_MAP[guess];
   });
+}
+
+function renderTurn() {
+  turnEl.innerText = ' ' + turn;
 }
