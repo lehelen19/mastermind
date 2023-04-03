@@ -18,6 +18,7 @@ let curGuess;
 let code;
 
 /*----- cached elements  -----*/
+const gameboardEl = document.getElementById('gameboard');
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
@@ -105,16 +106,32 @@ function handleGuessSubmit() {
 }
 
 function renderGuess(exactCount, closeCount) {
-  // TODO: Render guess
-  guessContainerEls.forEach(function (guess, i) {
-    guess.style.backgroundColor = COLORS_MAP[curGuess[i]];
-  });
+  // Render submitted guess
+  const guessContainerDiv = document.createElement('div');
+  guessContainerDiv.className = 'guess-container';
+
+  const colorsContainerDiv = document.createElement('div');
+  colorsContainerDiv.className = 'colors-container';
+  for (let i = 0; i < 4; i++) {
+    const colorDiv = document.createElement('div');
+    colorDiv.style.backgroundColor = COLORS_MAP[curGuess[i]];
+    colorsContainerDiv.appendChild(colorDiv);
+  }
+  guessContainerDiv.appendChild(colorsContainerDiv);
 
   // Render miniboard
-  for (let i = 0; i < exactCount; i++) {
-    miniboardEls[i].style.backgroundColor = 'green';
+  const miniboardDiv = document.createElement('div');
+  miniboardDiv.className = 'miniboard';
+  for (let i = 0; i < 4; i++) {
+    const miniColorDiv = document.createElement('div');
+    if (i < exactCount) {
+      miniColorDiv.style.backgroundColor = 'green';
+    } else if (i >= exactCount && i < closeCount) {
+      miniColorDiv.style.backgroundColor = 'yellow';
+    }
+    miniboardDiv.appendChild(miniColorDiv);
   }
-  for (let j = exactCount; j < closeCount; j++) {
-    miniboardEls[j].style.backgroundColor = 'yellow';
-  }
+  guessContainerDiv.appendChild(miniboardDiv);
+
+  gameboardEl.appendChild(guessContainerDiv);
 }
