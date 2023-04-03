@@ -19,7 +19,7 @@ let code;
 
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
-const curGuessEl = [...document.querySelectorAll('#player-guess > div')];
+const curGuessEls = [...document.querySelectorAll('#player-guess > div')];
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
@@ -45,12 +45,14 @@ deleteBtn.addEventListener('click', function (e) {
   if (curGuess.length > 0) {
     curGuess.pop();
   }
+  renderCurGuess();
 });
 
 clearBtn.addEventListener('click', function () {
   if (curGuess.length > 0) {
     curGuess = [];
   }
+  renderCurGuess();
 });
 
 submitBtn.addEventListener('click', handleGuessSubmit);
@@ -103,8 +105,9 @@ function handleGuessSubmit() {
 
   renderGuess(exactMatch, closeMatch);
 
-  // Reset guess
+  // Clear player guess
   curGuess = [];
+  renderCurGuess();
 }
 
 function renderGuess(exactCount, closeCount) {
@@ -139,10 +142,14 @@ function renderGuess(exactCount, closeCount) {
 }
 
 function renderCurGuess() {
-  console.log('rendering');
+  if (curGuess.length === 0) {
+    curGuessEls.forEach(function (el) {
+      el.style.backgroundColor = 'transparent';
+    });
+  }
   curGuess.forEach(function (guess, i) {
-    console.log(curGuessEl);
+    console.log(curGuessEls);
     console.log(curGuess);
-    curGuessEl[i].style.backgroundColor = COLORS_MAP[guess];
+    curGuessEls[i].style.backgroundColor = COLORS_MAP[guess];
   });
 }
