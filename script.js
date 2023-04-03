@@ -142,11 +142,9 @@ function renderGuess(exactCount, closeCount) {
 }
 
 function renderCurGuess() {
-  if (curGuess.length === 0) {
-    curGuessEls.forEach(function (el) {
-      el.style.backgroundColor = 'transparent';
-    });
-  }
+  curGuessEls.forEach(function (el) {
+    el.style.backgroundColor = 'transparent';
+  });
   curGuess.forEach(function (guess, i) {
     console.log(curGuessEls);
     console.log(curGuess);
