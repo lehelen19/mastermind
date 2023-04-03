@@ -6,6 +6,7 @@ let turn;
 let winner;
 let board;
 let curGuess;
+let code;
 
 /*----- cached elements  -----*/
 const choiceContainerEl = document.getElementById('choice-container');
@@ -44,6 +45,7 @@ init();
 function init() {
   console.log('Game initialized.');
   curGuess = [];
+  code = generateCode();
 }
 
 function generateCode() {
