@@ -40,6 +40,8 @@ clearBtn.addEventListener('click', function () {
   console.log(curGuess);
 });
 
+submitBtn.addEventListener('click', handleGuessSubmit);
+
 /*----- functions -----*/
 init();
 function init() {
@@ -55,4 +57,14 @@ function generateCode() {
     code.push(randInt);
   }
   return code;
+}
+
+function handleGuessSubmit() {
+  if (curGuess.length !== 6) {
+    console.log('GUESS IS NOT COMPLETE.');
+    return;
+  }
+  // Interpret guess here
+  let numCorrect = 0;
+  let numNearlyCorrect = 0;
 }
