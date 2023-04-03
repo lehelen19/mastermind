@@ -66,7 +66,6 @@ function handleGuessSubmit() {
     return;
   }
   // Interpret guess here
-  console.log(curGuess);
   let codeCopy = { ...code };
   let exactMatch = 0;
   let closeMatch = 0;
@@ -78,16 +77,18 @@ function handleGuessSubmit() {
       codeCopy[i] = -1;
     }
   });
+  console.log('after', codeCopy);
+  console.log('after', curGuess);
   curGuess.forEach(function (guess) {
     if (guess > -1) {
-      if (guess in codeCopy) {
+      if (Object.values(codeCopy).includes(guess)) {
         closeMatch += 1;
       }
     }
   });
-  console.log(exactMatch);
-  console.log(closeMatch);
+  console.log('exact', exactMatch);
+  console.log('close', closeMatch);
 
   // Reset guess
-  // curGuess = [];
+  curGuess = [];
 }
