@@ -25,6 +25,13 @@ choiceContainerEl.addEventListener('click', function (e) {
   console.log(curGuess);
 });
 
+deleteBtn.addEventListener('click', function (e) {
+  if (curGuess.length > 0) {
+    curGuess.pop();
+  }
+  console.log(curGuess);
+});
+
 /*----- functions -----*/
 init();
 function init() {
