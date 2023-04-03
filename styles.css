@@ -16,47 +16,88 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#colors-container {
+main {
+  display: flex;
+}
+
+section {
+  margin: 25px 50px;
+}
+
+.colors-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 250px;
+  min-width: 300px;
   border: 2px solid black;
 }
 
-#colors-container > div {
+.colors-container > div {
   margin: 10px;
   padding: 10px;
-  height: 50px;
-  width: 50px;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 
-#colors-container > div:hover {
+.guess-container {
+  display: flex;
+}
+
+.miniboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 0 15px;
+  border: 2px solid black;
+}
+
+.miniboard > div {
+  background-color: lightblue;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+#choice-container > div {
+  height: 50px;
+  width: 50px;
+}
+
+#choice-container > div:hover {
   border: 2px solid gray;
 }
 
-#color1 {
+.color1 {
   background-color: pink;
 }
 
-#color2 {
+.color2 {
   background-color: lightgreen;
 }
 
-#color3 {
+.color3 {
   background-color: lightblue;
 }
 
-#color4 {
+.color4 {
   background-color: palevioletred;
 }
 
-#color5 {
+.color5 {
   background-color: blueviolet;
 }
 
-#color6 {
+.color6 {
   background-color: yellow;
+}
+
+#player-guess {
+  margin-bottom: 20px;
+  background-color: lightblue;
 }
