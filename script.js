@@ -1,5 +1,6 @@
 /*----- constants -----*/
-const choices = [0, 1, 2, 3, 4, 5];
+const CHOICES = [0, 1, 2, 3, 4, 5];
+const GUESS_LEN = 4;
 
 /*----- state variables -----*/
 let turn;
@@ -20,7 +21,7 @@ choiceContainerEl.addEventListener('click', function (e) {
   if (e.target.id) {
     return;
   }
-  if (curGuess.length < 6) {
+  if (curGuess.length < GUESS_LEN) {
     curGuess.push(Number(e.target.dataset.index));
   }
   console.log(curGuess);
@@ -52,7 +53,7 @@ function init() {
 
 function generateCode() {
   const code = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < GUESS_LEN; i++) {
     const randInt = Math.floor(Math.random() * 6);
     code.push(randInt);
   }
@@ -60,7 +61,7 @@ function generateCode() {
 }
 
 function handleGuessSubmit() {
-  if (curGuess.length !== 6) {
+  if (curGuess.length !== GUESS_LEN) {
     console.log('GUESS IS NOT COMPLETE.');
     return;
   }
