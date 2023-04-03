@@ -105,6 +105,13 @@ function handleGuessSubmit() {
 
   renderGuess(exactMatch, closeMatch);
 
+  // CHECK FOR WIN CONDITION
+  if (exactMatch === GUESS_LEN) {
+    // TODO: Render win message
+    console.log('You have won!');
+    // TODO: Disable further guesses
+  }
+
   // Clear player guess
   curGuess = [];
   renderCurGuess();
@@ -146,8 +153,6 @@ function renderCurGuess() {
     el.style.backgroundColor = 'transparent';
   });
   curGuess.forEach(function (guess, i) {
-    console.log(curGuessEls);
-    console.log(curGuess);
     curGuessEls[i].style.backgroundColor = COLORS_MAP[guess];
   });
 }
