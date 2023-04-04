@@ -19,6 +19,7 @@ let code;
 
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
+const guessContainerEls = [...document.querySelectorAll('.guess-container')];
 const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
@@ -106,7 +107,7 @@ function handleGuessSubmit() {
 
   curGuessCopy.forEach(function (guess, i) {
     if (guess > -1) {
-      if (guess === codeCopy[i]) {
+      if (Object.values(codeCopy).includes(guess)) {
         closeMatch += 1;
         codeCopy[i] = -1;
       }
@@ -114,9 +115,6 @@ function handleGuessSubmit() {
   });
 
   renderMiniboard(exactMatch, closeMatch);
-
-  turn += 1;
-  renderTurn();
 
   // TODO: Render win/loss message
   // CHECK FOR WIN/LOSS CONDITION
@@ -131,6 +129,10 @@ function handleGuessSubmit() {
   // Clear player guess
   curGuess = [];
   renderCurGuess();
+
+  // Render next turn
+  turn += 1;
+  renderTurn();
 }
 
 function renderMiniboard(exactCount, closeCount) {
@@ -138,6 +140,7 @@ function renderMiniboard(exactCount, closeCount) {
     ...document.getElementById(`${turn}`).querySelectorAll('.miniboard > div'),
   ];
   miniboardDivArr.forEach(function (div, i) {
+    div.style.backgroundColor = 'red';
     if (i < exactCount) {
       div.style.backgroundColor = 'green';
     } else if (i >= exactCount && i < closeCount) {
@@ -155,13 +158,16 @@ function renderCurGuess() {
   guessDivArr.forEach(function (div) {
     div.style.backgroundColor = 'transparent';
   });
-  console.log(guessDivArr);
   curGuess.forEach(function (guess, i) {
     guessDivArr[i].style.backgroundColor = COLORS_MAP[guess];
   });
 }
 
 function renderTurn() {
+  if (turn > 1) {
+    guessContainerEls[turn - 2].style.border = 'none';
+  }
+  guessContainerEls[turn - 1].style.border = '2px solid lightblue';
   turnEl.innerText = ' ' + turn;
 }
 

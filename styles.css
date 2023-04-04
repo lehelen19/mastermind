@@ -84,7 +84,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  padding: 10px;
   /* background: lightcoral; */
 }
 
@@ -100,7 +100,7 @@ section {
 }
 
 .miniboard > div {
-  background-color: lightblue;
+  background-color: lightgray;
   width: 30px;
   height: 30px;
   border-radius: 50%;
