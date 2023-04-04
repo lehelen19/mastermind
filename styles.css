@@ -3,6 +3,16 @@ html {
   font-size: 16px;
 }
 
+:root {
+  --first-color: #27296d;
+
+  --second-color: #5e63b6;
+
+  --third-color: #a393eb;
+
+  --fourth-color: #f5c7f7;
+}
+
 *,
 *:before,
 *:after {
@@ -100,6 +110,23 @@ section {
   height: 30px;
   border-radius: 50%;
   margin: 5px;
+}
+
+button {
+  color: white;
+  background-color: var(--third-color);
+  border: 1px solid var(--second-color);
+  border-radius: 4px;
+  padding: 0 15px;
+  cursor: pointer;
+  height: 32px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  box-shadow: 1px 1px var(--second-color), 2px 2px var(--third-color),
+    3px 3px var(--fourth-color);
+  transform: translateX(-3px);
 }
 
 .color1 {
