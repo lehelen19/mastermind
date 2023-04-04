@@ -60,8 +60,9 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  min-width: 200px;
+  min-width: 250px;
+  height: 100px;
+  background-color: lightgray;
   border: 2px solid black;
 }
 
@@ -79,15 +80,11 @@ section {
   align-items: center;
 }
 
-#player-guess {
-  min-width: 250px;
-  height: 80px;
-  margin-bottom: 20px;
-  background-color: lightgray;
-}
-
 .guess-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
   /* background: lightcoral; */
 }
 
