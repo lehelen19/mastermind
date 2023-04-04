@@ -20,13 +20,9 @@ let code;
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
 const turnEl = document.getElementById('turn');
-const curGuessEls = [...document.querySelectorAll('#player-guess > div')];
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
-const guessContainerEls = [
-  ...document.querySelectorAll('.guess-container > div.colors-container > div'),
-];
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
@@ -136,43 +132,47 @@ function handleGuessSubmit() {
   renderCurGuess();
 }
 
-function renderGuess(exactCount, closeCount) {
-  // Render submitted guess
-  const guessContainerDiv = document.createElement('div');
-  guessContainerDiv.className = 'guess-container';
+// function renderGuess(exactCount, closeCount) {
+//   // Render submitted guess
+//   const guessContainerDiv = document.createElement('div');
+//   guessContainerDiv.className = 'guess-container';
 
-  const colorsContainerDiv = document.createElement('div');
-  colorsContainerDiv.className = 'colors-container';
-  for (let i = 0; i < 4; i++) {
-    const colorDiv = document.createElement('div');
-    colorDiv.style.backgroundColor = COLORS_MAP[curGuess[i]];
-    colorsContainerDiv.appendChild(colorDiv);
-  }
-  guessContainerDiv.appendChild(colorsContainerDiv);
+//   const colorsContainerDiv = document.createElement('div');
+//   colorsContainerDiv.className = 'colors-container';
+//   for (let i = 0; i < 4; i++) {
+//     const colorDiv = document.createElement('div');
+//     colorDiv.style.backgroundColor = COLORS_MAP[curGuess[i]];
+//     colorsContainerDiv.appendChild(colorDiv);
+//   }
+//   guessContainerDiv.appendChild(colorsContainerDiv);
 
-  // Render miniboard
-  const miniboardDiv = document.createElement('div');
-  miniboardDiv.className = 'miniboard';
-  for (let i = 0; i < 4; i++) {
-    const miniColorDiv = document.createElement('div');
-    if (i < exactCount) {
-      miniColorDiv.style.backgroundColor = 'green';
-    } else if (i >= exactCount && i < closeCount) {
-      miniColorDiv.style.backgroundColor = 'yellow';
-    }
-    miniboardDiv.appendChild(miniColorDiv);
-  }
-  guessContainerDiv.appendChild(miniboardDiv);
+//   // Render miniboard
+//   const miniboardDiv = document.createElement('div');
+//   miniboardDiv.className = 'miniboard';
+//   for (let i = 0; i < 4; i++) {
+//     const miniColorDiv = document.createElement('div');
+//     if (i < exactCount) {
+//       miniColorDiv.style.backgroundColor = 'green';
+//     } else if (i >= exactCount && i < closeCount) {
+//       miniColorDiv.style.backgroundColor = 'yellow';
+//     }
+//     miniboardDiv.appendChild(miniColorDiv);
+//   }
+//   guessContainerDiv.appendChild(miniboardDiv);
 
-  gameboardEl.appendChild(guessContainerDiv);
-}
+//   gameboardEl.appendChild(guessContainerDiv);
+// }
 
 function renderCurGuess() {
-  curGuessEls.forEach(function (el) {
-    el.style.backgroundColor = 'transparent';
+  const guessDivArr = [
+    ...document.getElementById(`${turn}`).querySelectorAll('div'),
+  ];
+  guessDivArr.forEach(function (div) {
+    div.style.backgroundColor = 'transparent';
   });
+  console.log(guessDivArr);
   curGuess.forEach(function (guess, i) {
-    curGuessEls[i].style.backgroundColor = COLORS_MAP[guess];
+    guessDivArr[i].style.backgroundColor = COLORS_MAP[guess];
   });
 }
 
