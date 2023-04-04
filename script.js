@@ -1,6 +1,7 @@
 /*----- constants -----*/
 const CHOICES = [0, 1, 2, 3, 4, 5];
 const GUESS_LEN = 4;
+const TURN_MAX = 12;
 const COLORS_MAP = {
   0: '#c44601',
   1: '#0073e6',
@@ -19,6 +20,7 @@ let code;
 
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
+const errorMsgEl = document.querySelector('.error-msg');
 const guessContainerEls = [...document.querySelectorAll('.guess-container')];
 const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
@@ -88,9 +90,11 @@ function generateCode() {
 }
 
 function handleGuessSubmit() {
+  // Clear any previous error messages
+  errorMsgEl.innerText = '';
+
   if (curGuess.length !== GUESS_LEN) {
-    // TODO: Render user error message to screen
-    console.log('GUESS IS NOT COMPLETE.');
+    errorMsgEl.innerText = 'Your guess must be four colors!';
     return;
   }
 
@@ -124,7 +128,7 @@ function handleGuessSubmit() {
   // TODO: Disable further guesses if either condition is met
   if (exactMatch === GUESS_LEN) {
     console.log('You have won!');
-  } else if (turn === 12) {
+  } else if (turn === TURN_MAX) {
     // CHECK FOR LOSS CONDITION
     console.log('You have lost.');
   }

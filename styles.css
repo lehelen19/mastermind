@@ -55,6 +55,13 @@ p {
   margin-bottom: 10px;
 }
 
+.error-msg {
+  font-size: 1.2rem;
+  font-style: normal;
+  height: 25px;
+  margin-bottom: 30px;
+}
+
 section {
   padding: 0 40px;
   /* background-color: lightyellow; */
@@ -144,6 +151,7 @@ button {
   font-size: 1.2rem;
   transition: all 0.2s ease-in-out;
 }
+
 button:hover {
   box-shadow: 1px 1px var(--second-color), 2px 2px var(--third-color),
     3px 3px var(--fourth-color);
