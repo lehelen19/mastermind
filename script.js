@@ -106,13 +106,14 @@ function handleGuessSubmit() {
 
   curGuessCopy.forEach(function (guess) {
     if (guess > -1) {
-      if (Object.values(codeCopy).includes(guess)) {
+      if (guess === codeCopy[i]) {
         closeMatch += 1;
+        codeCopy[i] = -1;
       }
     }
   });
 
-  renderGuess(exactMatch, closeMatch);
+  renderMiniboard(exactMatch, closeMatch);
 
   turn += 1;
   renderTurn();
@@ -132,40 +133,24 @@ function handleGuessSubmit() {
   renderCurGuess();
 }
 
-// function renderGuess(exactCount, closeCount) {
-//   // Render submitted guess
-//   const guessContainerDiv = document.createElement('div');
-//   guessContainerDiv.className = 'guess-container';
-
-//   const colorsContainerDiv = document.createElement('div');
-//   colorsContainerDiv.className = 'colors-container';
-//   for (let i = 0; i < 4; i++) {
-//     const colorDiv = document.createElement('div');
-//     colorDiv.style.backgroundColor = COLORS_MAP[curGuess[i]];
-//     colorsContainerDiv.appendChild(colorDiv);
-//   }
-//   guessContainerDiv.appendChild(colorsContainerDiv);
-
-//   // Render miniboard
-//   const miniboardDiv = document.createElement('div');
-//   miniboardDiv.className = 'miniboard';
-//   for (let i = 0; i < 4; i++) {
-//     const miniColorDiv = document.createElement('div');
-//     if (i < exactCount) {
-//       miniColorDiv.style.backgroundColor = 'green';
-//     } else if (i >= exactCount && i < closeCount) {
-//       miniColorDiv.style.backgroundColor = 'yellow';
-//     }
-//     miniboardDiv.appendChild(miniColorDiv);
-//   }
-//   guessContainerDiv.appendChild(miniboardDiv);
-
-//   gameboardEl.appendChild(guessContainerDiv);
-// }
+function renderMiniboard(exactCount, closeCount) {
+  const miniboardDivArr = [
+    ...document.getElementById(`${turn}`).querySelectorAll('.miniboard > div'),
+  ];
+  miniboardDivArr.forEach(function (div, i) {
+    if (i < exactCount) {
+      div.style.backgroundColor = 'green';
+    } else if (i >= exactCount && i < closeCount) {
+      div.style.backgroundColor = 'yellow';
+    }
+  });
+}
 
 function renderCurGuess() {
   const guessDivArr = [
-    ...document.getElementById(`${turn}`).querySelectorAll('div'),
+    ...document
+      .getElementById(`${turn}`)
+      .querySelectorAll('.colors-container > div'),
   ];
   guessDivArr.forEach(function (div) {
     div.style.backgroundColor = 'transparent';
