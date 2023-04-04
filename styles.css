@@ -51,7 +51,7 @@ h2 {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .guess-text {
@@ -205,4 +205,16 @@ button:disabled:hover {
 
 .color6 {
   background-color: #c08300;
+}
+
+.bold-text {
+  font-weight: 800;
+}
+
+.yellow {
+  background-color: rgba(255, 255, 0, 0.438);
+}
+
+.green {
+  background-color: rgba(0, 128, 0, 0.39);
 }
