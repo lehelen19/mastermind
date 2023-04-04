@@ -27,6 +27,7 @@ const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
 const guessContainerEls = [
   ...document.querySelectorAll('.guess-container > div.colors-container > div'),
 ];
+const guessContainerEl = document.querySelector('.guess-container');
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
@@ -72,7 +73,7 @@ function init() {
   curGuess = [];
   code = generateCode();
 
-  // Render board
+  // Render current turn
   renderTurn();
 
   console.log('Game initialized.');
@@ -138,9 +139,6 @@ function handleGuessSubmit() {
 
 function renderGuess(exactCount, closeCount) {
   // Render submitted guess
-  const guessContainerDiv = document.createElement('div');
-  guessContainerDiv.className = 'guess-container';
-
   const colorsContainerDiv = document.createElement('div');
   colorsContainerDiv.className = 'colors-container';
   for (let i = 0; i < 4; i++) {
@@ -148,7 +146,6 @@ function renderGuess(exactCount, closeCount) {
     colorDiv.style.backgroundColor = COLORS_MAP[curGuess[i]];
     colorsContainerDiv.appendChild(colorDiv);
   }
-  guessContainerDiv.appendChild(colorsContainerDiv);
 
   // Render miniboard
   const miniboardDiv = document.createElement('div');
@@ -162,9 +159,8 @@ function renderGuess(exactCount, closeCount) {
     }
     miniboardDiv.appendChild(miniColorDiv);
   }
-  guessContainerDiv.appendChild(miniboardDiv);
-
-  gameboardEl.appendChild(guessContainerDiv);
+  guessContainerEl.prepend(miniboardDiv);
+  guessContainerEl.prepend(colorsContainerDiv);
 }
 
 function renderCurGuess() {

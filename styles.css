@@ -24,25 +24,63 @@ section {
   margin: 25px 50px;
 }
 
-.colors-container {
+#choice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
+#choice-container > div {
+  margin: 0.8em;
+  height: 4vmin;
+  width: 4vmin;
+  border-radius: 50%;
+}
+
+#choice-container > div:hover {
+  border: 2px solid gray;
+}
+
+/* .colors-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   min-width: 300px;
   border: 2px solid black;
-}
+} */
 
-.colors-container > div {
+/* .colors-container > div {
   margin: 10px;
   padding: 10px;
   border-radius: 50%;
   width: 30px;
   height: 30px;
+} */
+
+#gameboard {
+  background-color: lightcyan;
+  height: 1000px;
+  width: 500px;
+}
+
+#player-guess {
+  margin-bottom: 20px;
+  background-color: lightgray;
 }
 
 .guess-container {
-  display: flex;
+  /* display: flex;
+  flex-wrap: wrap; */
+  height: 100px;
+  width: 100px;
+  background-color: red;
+}
+
+.guess-container > div {
+  /* flex: 10%; */
 }
 
 .miniboard {
@@ -62,15 +100,6 @@ section {
   height: 30px;
   border-radius: 50%;
   margin: 5px;
-}
-
-#choice-container > div {
-  height: 50px;
-  width: 50px;
-}
-
-#choice-container > div:hover {
-  border: 2px solid gray;
 }
 
 .color1 {
@@ -95,9 +124,4 @@ section {
 
 .color6 {
   background-color: yellow;
-}
-
-#player-guess {
-  margin-bottom: 20px;
-  background-color: lightgray;
 }
