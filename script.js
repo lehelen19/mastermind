@@ -66,8 +66,6 @@ function init() {
 
   // Render current turn
   renderTurn();
-
-  console.log('Game initialized.');
 }
 
 function generateCode() {
@@ -113,8 +111,6 @@ function handleGuessSubmit() {
 
   renderMiniboard(exactMatch, closeMatch);
 
-  // TODO: Render win/loss message
-  // TODO: Disable further guesses if either condition is met
   if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
     deleteBtn.disabled = true;
     clearBtn.disabled = true;
@@ -123,16 +119,14 @@ function handleGuessSubmit() {
   }
   if (exactMatch === GUESS_LEN) {
     resultMsgEl.innerText = 'You win!!!';
+    return;
   } else if (turn === TURN_MAX) {
     resultMsgEl.innerText = 'You lost... try again?';
+    return;
   }
 
   // Clear player guess
   curGuess = [];
-
-  if (turn === 12) {
-    return;
-  }
 
   // Render next turn
   turn += 1;
