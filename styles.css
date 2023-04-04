@@ -51,6 +51,10 @@ h2 {
 }
 
 p {
+  font-size: 1.2rem;
+}
+
+.guess-text {
   font-size: 1.5rem;
   font-style: italic;
   margin-bottom: 10px;
@@ -135,7 +139,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 60px;
+  width: 60px;
   height: 60px;
   border: 2px solid black;
   background-color: white;
@@ -201,31 +205,4 @@ button:disabled:hover {
 
 .color6 {
   background-color: #c08300;
-}
-
-@media only screen and (max-width: 900px) {
-  #choice-container {
-    flex-wrap: wrap;
-  }
-
-  header {
-    height: 5vmax;
-  }
-
-  h1 {
-    font-size: 5vmin;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  .miniboard {
-    height: 100px;
-    width: 40px;
-  }
-
-  button {
-    font-size: 1rem;
-  }
 }
