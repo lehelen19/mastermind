@@ -36,15 +36,7 @@ const submitBtn = document.getElementById('submit-btn');
 const resetBtn = document.getElementById('reset-btn');
 
 /*----- event listeners -----*/
-choiceContainerEl.addEventListener('click', function (e) {
-  if (e.target.id || curGuess.length === GUESS_LEN) {
-    return;
-  }
-  if (curGuess.length < GUESS_LEN) {
-    curGuess.push(Number(e.target.dataset.index));
-    renderCurGuess();
-  }
-});
+choiceContainerEl.addEventListener('click', updateGuess);
 
 deleteBtn.addEventListener('click', function (e) {
   if (curGuess.length > 0) {
@@ -123,6 +115,12 @@ function handleGuessSubmit() {
 
   // TODO: Render win/loss message
   // TODO: Disable further guesses if either condition is met
+  if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
+    deleteBtn.disabled = true;
+    clearBtn.disabled = true;
+    submitBtn.disabled = true;
+    choiceContainerEl.removeEventListener('click', updateGuess);
+  }
   if (exactMatch === GUESS_LEN) {
     resultMsgEl.innerText = 'You win!!!';
   } else if (turn === TURN_MAX) {
@@ -179,7 +177,7 @@ function renderTurn() {
   turnEl.innerText = ' ' + turn;
 }
 
-function clearBoard() {
+function resetBoard() {
   guessContainerEls[turn - 1].style.border = 'none';
   guessContainerEls[turn - 1].style.backgroundColor = 'transparent';
 
@@ -189,9 +187,27 @@ function clearBoard() {
   miniboardEls.forEach(function (div) {
     div.style.backgroundColor = 'lightgray';
   });
+
+  deleteBtn.disabled = false;
+  clearBtn.disabled = false;
+  submitBtn.disabled = false;
+
+  resultMsgEl.innerText = '';
+
+  choiceContainerEl.addEventListener('click', updateGuess);
 }
 
 function resetGame() {
-  clearBoard();
+  resetBoard();
   init();
+}
+
+function updateGuess(e) {
+  if (e.target.id || curGuess.length === GUESS_LEN) {
+    return;
+  }
+  if (curGuess.length < GUESS_LEN) {
+    curGuess.push(Number(e.target.dataset.index));
+    renderCurGuess();
+  }
 }
