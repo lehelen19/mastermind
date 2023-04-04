@@ -2,12 +2,12 @@
 const CHOICES = [0, 1, 2, 3, 4, 5];
 const GUESS_LEN = 4;
 const COLORS_MAP = {
-  0: 'pink',
-  1: 'lightgreen',
-  2: 'lightblue',
-  3: 'palevioletred',
-  4: 'blueviolet',
-  5: 'yellow',
+  0: '#c44601',
+  1: '#0073e6',
+  2: '#5ba300',
+  3: '#e6308a',
+  4: '#55245b',
+  5: '#c08300',
 };
 
 /*----- state variables -----*/
