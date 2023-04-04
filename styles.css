@@ -62,6 +62,12 @@ p {
   margin-bottom: 30px;
 }
 
+.result-msg {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
 section {
   padding: 0 40px;
   /* background-color: lightyellow; */

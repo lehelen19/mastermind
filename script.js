@@ -21,6 +21,7 @@ let code;
 /*----- cached elements  -----*/
 const gameboardEl = document.getElementById('gameboard');
 const errorMsgEl = document.querySelector('.error-msg');
+const resultMsgEl = document.querySelector('.result-msg');
 const guessContainerEls = [...document.querySelectorAll('.guess-container')];
 const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
@@ -121,13 +122,11 @@ function handleGuessSubmit() {
   renderMiniboard(exactMatch, closeMatch);
 
   // TODO: Render win/loss message
-  // CHECK FOR WIN/LOSS CONDITION
   // TODO: Disable further guesses if either condition is met
   if (exactMatch === GUESS_LEN) {
-    console.log('You have won!');
+    resultMsgEl.innerText = 'You win!!!';
   } else if (turn === TURN_MAX) {
-    // CHECK FOR LOSS CONDITION
-    console.log('You have lost.');
+    resultMsgEl.innerText = 'You lost... try again?';
   }
 
   // Clear player guess
