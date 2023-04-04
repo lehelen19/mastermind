@@ -61,14 +61,11 @@ clearBtn.addEventListener('click', function () {
 
 submitBtn.addEventListener('click', handleGuessSubmit);
 
-resetBtn.addEventListener('click', init);
+resetBtn.addEventListener('click', resetGame);
 
 /*----- functions -----*/
 init();
 function init() {
-  // Clear board
-  clearBoard();
-
   // Initialize state variables
   turn = 1;
   curGuess = [];
@@ -171,17 +168,27 @@ function renderCurGuess() {
 
 function renderTurn() {
   if (turn > 1) {
+    guessContainerEls[turn - 2].style.backgroundColor = 'transparent';
     guessContainerEls[turn - 2].style.border = 'none';
   }
-  guessContainerEls[turn - 1].style.border = '2px solid lightblue';
+  guessContainerEls[turn - 1].style.backgroundColor = '#a393eb';
+  guessContainerEls[turn - 1].style.border = '2px solid #5e63b6';
   turnEl.innerText = ' ' + turn;
 }
 
 function clearBoard() {
+  guessContainerEls[turn - 1].style.border = 'none';
+  guessContainerEls[turn - 1].style.backgroundColor = 'transparent';
+
   prevGuessesEls.forEach(function (div) {
     div.style.backgroundColor = 'transparent';
   });
   miniboardEls.forEach(function (div) {
-    div.style.backgroundColor = 'transparent';
+    div.style.backgroundColor = 'lightgray';
   });
+}
+
+function resetGame() {
+  clearBoard();
+  init();
 }
