@@ -104,7 +104,7 @@ function handleGuessSubmit() {
     }
   });
 
-  curGuessCopy.forEach(function (guess) {
+  curGuessCopy.forEach(function (guess, i) {
     if (guess > -1) {
       if (guess === codeCopy[i]) {
         closeMatch += 1;
