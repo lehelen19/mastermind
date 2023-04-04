@@ -128,7 +128,6 @@ function handleGuessSubmit() {
 
   // Clear player guess
   curGuess = [];
-  renderCurGuess();
 
   // Render next turn
   turn += 1;
@@ -169,10 +168,4 @@ function renderTurn() {
   }
   guessContainerEls[turn - 1].style.border = '2px solid lightblue';
   turnEl.innerText = ' ' + turn;
-}
-
-function clearBoard() {
-  while (gameboardEl.childNodes.length > 2) {
-    gameboardEl.removeChild(gameboardEl.lastChild);
-  }
 }
