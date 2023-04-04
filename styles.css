@@ -30,6 +30,18 @@ main {
   display: flex;
 }
 
+h2 {
+  color: white;
+  background-color: var(--first-color);
+  padding: 10px;
+}
+
+p {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
 section {
   margin: 25px 0;
   padding: 0 40px;
@@ -54,6 +66,7 @@ section {
 
 #choice-container > div:hover {
   border: 2px solid gray;
+  cursor: pointer;
 }
 
 .colors-container {
