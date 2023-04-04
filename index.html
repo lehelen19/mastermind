@@ -15,8 +15,7 @@
     <main>
       <section>
         <h2>Turn Number:<span id="turn"></span></h2>
-        <p>Make your guess:</p>
-
+        <p class="guess-text">Make your guess:</p>
         <div id="choice-container">
           <div class="color1" data-index="0"></div>
           <div class="color2" data-index="1"></div>
@@ -203,6 +202,31 @@
             <div></div>
           </div>
         </div>
+      </section>
+      <section>
+        <h1>How to play the game:</h1>
+        <p>
+          A randomized "code" of four colors (including duplicates) has been
+          generated. You have <span class="bold-text">12 tries</span> to guess
+          the secret code by selecting a combination of colors from the box on
+          the furthest left.
+        </p>
+        <p>
+          Clicking a color will add the color to your guess. You can edit your
+          guess by deleting a color or clearing the guess entirely.
+        </p>
+        <p>
+          Once you submit your guess, the mini-board to the right of your guess
+          will display how accurate it was. A
+          <span class="yellow">yellow</span> circle means your guess contains
+          one of the correct colors but in an incorrect position. A
+          <span class="green">green</span> circle means your guess contains one
+          of the correct colors in the correct position.
+          <span class="bold-text"
+            >The mini-board does not confirm the order of your guess.</span
+          >
+        </p>
+        <p>Four green circles means you've won the game!</p>
       </section>
     </main>
   </body>
