@@ -133,6 +133,10 @@ function handleGuessSubmit() {
   // Clear player guess
   curGuess = [];
 
+  if (turn === 12) {
+    return;
+  }
+
   // Render next turn
   turn += 1;
   renderTurn();
