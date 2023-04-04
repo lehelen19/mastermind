@@ -30,6 +30,7 @@ const guessContainerEls = [
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
+const resetBtn = document.getElementById('reset-btn');
 
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', function (e) {
@@ -58,12 +59,20 @@ clearBtn.addEventListener('click', function () {
 
 submitBtn.addEventListener('click', handleGuessSubmit);
 
+resetBtn.addEventListener('click', init);
+
 /*----- functions -----*/
 init();
 function init() {
+  // Clear board
+  clearBoard();
+
+  // Initialize state variables
   turn = 1;
   curGuess = [];
   code = generateCode();
+
+  // Render board
   renderTurn();
 
   console.log('Game initialized.');
@@ -169,4 +178,10 @@ function renderCurGuess() {
 
 function renderTurn() {
   turnEl.innerText = ' ' + turn;
+}
+
+function clearBoard() {
+  while (gameboardEl.childNodes.length > 2) {
+    gameboardEl.removeChild(gameboardEl.lastChild);
+  }
 }
