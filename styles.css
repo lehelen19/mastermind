@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Satisfy&display=swap');
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -23,11 +24,23 @@ body {
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 main {
   display: flex;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Satisfy', cursive;
+  font-size: 2rem;
+  height: 100px;
+  color: white;
+  background-color: var(--second-color);
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -43,7 +56,6 @@ p {
 }
 
 section {
-  margin: 25px 0;
   padding: 0 40px;
   /* background-color: lightyellow; */
 }

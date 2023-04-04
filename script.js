@@ -24,6 +24,9 @@ const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
 const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
+const prevGuessesEls = [
+  ...document.querySelectorAll('.colors-container > div'),
+];
 const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
@@ -62,7 +65,7 @@ resetBtn.addEventListener('click', init);
 init();
 function init() {
   // Clear board
-  // clearBoard();
+  clearBoard();
 
   // Initialize state variables
   turn = 1;
@@ -168,4 +171,13 @@ function renderTurn() {
   }
   guessContainerEls[turn - 1].style.border = '2px solid lightblue';
   turnEl.innerText = ' ' + turn;
+}
+
+function clearBoard() {
+  prevGuessesEls.forEach(function (div) {
+    div.style.backgroundColor = 'transparent';
+  });
+  miniboardEls.forEach(function (div) {
+    div.style.backgroundColor = 'transparent';
+  });
 }
