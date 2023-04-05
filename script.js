@@ -13,7 +13,6 @@ const COLORS_MAP = {
 
 /*----- state variables -----*/
 let turn;
-let winner;
 let board;
 let curGuess;
 let code;
@@ -69,7 +68,7 @@ showBtn.addEventListener('click', toggleCode);
 init();
 function init() {
   // Initialize state variables
-  turn = 1;
+  turn = 11;
   curGuess = [];
   code = generateCode();
 
@@ -129,11 +128,12 @@ function handleGuessSubmit() {
     choiceContainerEl.removeEventListener('click', updateGuess);
   }
   if (exactMatch === GUESS_LEN) {
-    resultMsgEl.innerText = 'You win!!!';
-    resultMsgEl.classList.add('animate__animated', 'animate__bounceIn');
+    resultMsgEl.innerText = "You win! You're a mastermind 🧐";
+    resultMsgEl.classList.add('animate__animated', 'animate__jackInTheBox');
     return;
   } else if (turn === TURN_MAX) {
-    resultMsgEl.innerText = 'You lost... try again?';
+    resultMsgEl.innerText = 'Maybe next time... 😪';
+    resultMsgEl.classList.add('animate__animated', 'animate__zoomIn');
     return;
   }
 
@@ -202,7 +202,11 @@ function resetBoard() {
   submitBtn.disabled = false;
 
   resultMsgEl.innerText = '';
-  resultMsgEl.classList.remove('animate__animated', 'animate__bounceIn');
+  resultMsgEl.classList.remove(
+    'animate__animated',
+    'animate__jackInTheBox',
+    'animate__zoomIn'
+  );
 
   choiceContainerEl.addEventListener('click', updateGuess);
 }
