@@ -139,14 +139,19 @@ function renderMiniboard(exactCount, closeCount) {
   const miniboardDivArr = [
     ...document.getElementById(`${turn}`).querySelectorAll('.miniboard > div'),
   ];
+
   miniboardDivArr.forEach(function (div, i) {
     div.style.backgroundColor = 'red';
-    if (i < exactCount) {
-      div.style.backgroundColor = 'green';
-    } else if (i >= exactCount && i < closeCount) {
-      div.style.backgroundColor = 'yellow';
-    }
   });
+
+  console.log(miniboardDivArr[0]);
+
+  for (let i = 0; i < exactCount; i++) {
+    miniboardDivArr[i].style.backgroundColor = 'green';
+  }
+  for (let i = exactCount; i < exactCount + closeCount; i++) {
+    miniboardDivArr[i].style.backgroundColor = 'yellow';
+  }
 }
 
 function renderCurGuess() {
