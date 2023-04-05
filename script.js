@@ -35,7 +35,11 @@ const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
 const resetBtn = document.getElementById('reset-btn');
 const showBtn = document.getElementById('show-btn');
-const codeEl = document.getElementById('code-box');
+const codeEls = [
+  ...document
+    .getElementById('code-box')
+    .querySelectorAll('.colors-container > div'),
+];
 
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', updateGuess);
@@ -67,6 +71,9 @@ function init() {
   turn = 1;
   curGuess = [];
   code = generateCode();
+
+  // Render secret code
+  renderCode();
 
   // Render current turn
   renderTurn();
@@ -212,4 +219,8 @@ function updateGuess(e) {
   }
 }
 
-function renderCode() {}
+function renderCode() {
+  Object.values(code).forEach(function (guess, i) {
+    codeEls[i].style.backgroundColor = COLORS_MAP[guess];
+  });
+}

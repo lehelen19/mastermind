@@ -238,3 +238,7 @@ button:disabled:hover {
 .instructions {
   margin-right: 30px;
 }
+
+#code-box {
+  visibility: hidden;
+}
