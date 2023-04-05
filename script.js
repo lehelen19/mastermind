@@ -68,7 +68,7 @@ showBtn.addEventListener('click', toggleCode);
 init();
 function init() {
   // Initialize state variables
-  turn = 11;
+  turn = 1;
   curGuess = [];
   code = generateCode();
 
