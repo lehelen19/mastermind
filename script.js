@@ -86,30 +86,29 @@ function handleGuessSubmit() {
     return;
   }
 
-  // Interpret guess here
   // TODO: FIX GAME LOGIC.
-  // test case: 4 yellows.
   let codeCopy = { ...code };
-  let curGuessCopy = [...curGuess];
   let exactMatch = 0;
   let closeMatch = 0;
 
-  curGuessCopy.forEach(function (guess, i) {
+  curGuess.forEach(function (guess, i) {
     if (guess === codeCopy[i]) {
       exactMatch += 1;
-      curGuessCopy[i] = -1;
+      curGuess[i] = -1;
       codeCopy[i] = -1;
     }
   });
 
-  curGuessCopy.forEach(function (guess, i) {
-    if (guess > -1) {
-      if (Object.values(codeCopy).includes(guess)) {
-        closeMatch += 1;
-        codeCopy[i] = -1;
-      }
+  const codeValues = Object.values(codeCopy);
+  curGuess.forEach(function (guess, i) {
+    const index = codeValues.indexOf(guess);
+    if (guess > -1 && index > -1) {
+      closeMatch += 1;
+      codeCopy[index] = -1;
     }
   });
+
+  console.log(exactMatch, closeMatch);
 
   renderMiniboard(exactMatch, closeMatch);
 
