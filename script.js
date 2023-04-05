@@ -35,6 +35,7 @@ const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
 const resetBtn = document.getElementById('reset-btn');
 const showBtn = document.getElementById('show-btn');
+const codeBox = document.getElementById('code-box');
 const codeEls = [
   ...document
     .getElementById('code-box')
@@ -62,7 +63,7 @@ submitBtn.addEventListener('click', handleGuessSubmit);
 
 resetBtn.addEventListener('click', resetGame);
 
-showBtn.addEventListener('click', renderCode);
+showBtn.addEventListener('click', toggleCode);
 
 /*----- functions -----*/
 init();
@@ -223,4 +224,9 @@ function renderCode() {
   Object.values(code).forEach(function (guess, i) {
     codeEls[i].style.backgroundColor = COLORS_MAP[guess];
   });
+}
+
+function toggleCode() {
+  codeBox.style.visibility =
+    codeBox.style.visibility === 'visible' ? 'hidden' : 'visible';
 }
