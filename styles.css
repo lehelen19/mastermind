@@ -241,4 +241,9 @@ button:disabled:hover {
 
 #code-box {
   visibility: hidden;
+  width: 50px;
+}
+
+#code-box > div {
+  border: 2px solid var(--first-color);
 }

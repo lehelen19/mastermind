@@ -227,6 +227,11 @@ function renderCode() {
 }
 
 function toggleCode() {
-  codeBox.style.visibility =
-    codeBox.style.visibility === 'visible' ? 'hidden' : 'visible';
+  if (codeBox.style.visibility === 'visible') {
+    codeBox.style.visibility = 'hidden';
+    showBtn.innerText = 'Show Code';
+  } else {
+    codeBox.style.visibility = 'visible';
+    showBtn.innerText = 'Hide Code';
+  }
 }
