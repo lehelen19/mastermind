@@ -34,6 +34,8 @@ const deleteBtn = document.getElementById('delete-btn');
 const clearBtn = document.getElementById('clear-btn');
 const submitBtn = document.getElementById('submit-btn');
 const resetBtn = document.getElementById('reset-btn');
+const showBtn = document.getElementById('show-btn');
+const codeEl = document.getElementById('code-box');
 
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', updateGuess);
@@ -55,6 +57,8 @@ clearBtn.addEventListener('click', function () {
 submitBtn.addEventListener('click', handleGuessSubmit);
 
 resetBtn.addEventListener('click', resetGame);
+
+showBtn.addEventListener('click', renderCode);
 
 /*----- functions -----*/
 init();
@@ -207,3 +211,5 @@ function updateGuess(e) {
     renderCurGuess();
   }
 }
+
+function renderCode() {}
