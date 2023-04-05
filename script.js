@@ -86,7 +86,6 @@ function handleGuessSubmit() {
     return;
   }
 
-  // TODO: FIX GAME LOGIC.
   let codeCopy = { ...code };
   let exactMatch = 0;
   let closeMatch = 0;
@@ -107,8 +106,6 @@ function handleGuessSubmit() {
       codeCopy[index] = -1;
     }
   });
-
-  console.log(exactMatch, closeMatch);
 
   renderMiniboard(exactMatch, closeMatch);
 
@@ -143,8 +140,6 @@ function renderMiniboard(exactCount, closeCount) {
   miniboardDivArr.forEach(function (div, i) {
     div.style.backgroundColor = 'red';
   });
-
-  console.log(miniboardDivArr[0]);
 
   for (let i = 0; i < exactCount; i++) {
     miniboardDivArr[i].style.backgroundColor = 'green';
