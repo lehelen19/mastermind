@@ -26,12 +26,12 @@ body {
   padding: 0;
   font-weight: normal;
   font-family: 'Open Sans', sans-serif;
-  height: 100vh;
   background-color: #dfd8ffaf;
 }
 
 main {
   display: flex;
+  height: 100vh;
 }
 
 header {
@@ -136,7 +136,7 @@ section {
   margin: 0 15px;
   border: 2px solid var(--second-color);
   border-radius: 5px;
-  height: 100%;
+  height: 80%;
 }
 
 .guess-container {
