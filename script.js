@@ -87,6 +87,8 @@ function handleGuessSubmit() {
   }
 
   // Interpret guess here
+  // TODO: FIX GAME LOGIC.
+  // test case: 4 yellows.
   let codeCopy = { ...code };
   let curGuessCopy = [...curGuess];
   let exactMatch = 0;
