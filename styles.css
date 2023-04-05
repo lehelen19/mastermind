@@ -66,15 +66,15 @@ aside > p {
 
 .guess-text {
   font-size: 1.5rem;
-  font-style: italic;
   margin-bottom: 10px;
 }
 
 .error-msg {
   font-size: 1.2rem;
-  font-style: normal;
+  font-style: italic;
   height: 25px;
   margin-bottom: 15px;
+  color: #e31c3d;
 }
 
 .result-msg {

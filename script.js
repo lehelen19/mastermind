@@ -91,8 +91,10 @@ function generateCode() {
 
 function handleGuessSubmit() {
   errorMsgEl.innerText = '';
+  errorMsgEl.classList.remove('animate__animated', 'animate__headShake');
 
   if (curGuess.length !== GUESS_LEN) {
+    errorMsgEl.classList.add('animate__animated', 'animate__headShake');
     errorMsgEl.innerText = 'Your guess must be four colors!';
     return;
   }
@@ -128,7 +130,7 @@ function handleGuessSubmit() {
   }
   if (exactMatch === GUESS_LEN) {
     resultMsgEl.innerText = 'You win!!!';
-    resultMsgEl.classList.add('animate__bounceIn');
+    resultMsgEl.classList.add('animate__animated', 'animate__bounceIn');
     return;
   } else if (turn === TURN_MAX) {
     resultMsgEl.innerText = 'You lost... try again?';
@@ -200,7 +202,7 @@ function resetBoard() {
   submitBtn.disabled = false;
 
   resultMsgEl.innerText = '';
-  resultMsgEl.classList.remove('animate__bounceIn');
+  resultMsgEl.classList.remove('animate__animated', 'animate__bounceIn');
 
   choiceContainerEl.addEventListener('click', updateGuess);
 }
