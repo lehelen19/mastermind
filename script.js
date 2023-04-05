@@ -78,7 +78,6 @@ function generateCode() {
 }
 
 function handleGuessSubmit() {
-  // Clear any previous error messages
   errorMsgEl.innerText = '';
 
   if (curGuess.length !== GUESS_LEN) {
@@ -103,7 +102,7 @@ function handleGuessSubmit() {
     const index = codeValues.indexOf(guess);
     if (guess > -1 && index > -1) {
       closeMatch += 1;
-      codeCopy[index] = -1;
+      codeValues[index] = -1;
     }
   });
 
