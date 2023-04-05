@@ -37,7 +37,7 @@ Once a player makes a guess, a miniature board ("miniboard") will display colors
 
 ## Play the Game
 
-You can play the game by clicking [here!](https://lehelen19.github.io/mastermind/)
+You can play the game by clicking [here](https://lehelen19.github.io/mastermind/)!
 
 Feel free to submit a pull request if you would like to suggest any changes.
 
