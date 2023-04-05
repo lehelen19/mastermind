@@ -234,3 +234,7 @@ button:disabled:hover {
 .green {
   background-color: rgba(0, 128, 0, 0.39);
 }
+
+.instructions {
+  margin-right: 30px;
+}
