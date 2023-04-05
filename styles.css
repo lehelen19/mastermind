@@ -74,7 +74,7 @@ aside > p {
   font-size: 1.2rem;
   font-style: normal;
   height: 25px;
-  margin: 0;
+  margin-bottom: 15px;
 }
 
 .result-msg {
@@ -240,10 +240,14 @@ button:disabled:hover {
 }
 
 #code-box {
+  display: flex;
+  flex-direction: column;
   visibility: hidden;
-  width: 50px;
+  font-style: italic;
+  margin-bottom: 10px;
 }
 
 #code-box > div {
   border: 2px solid var(--first-color);
+  width: 100px;
 }
