@@ -13,7 +13,6 @@ const COLORS_MAP = {
 
 /*----- state variables -----*/
 let turn;
-let board;
 let curGuess;
 let code;
 
@@ -61,15 +60,11 @@ showBtn.addEventListener('click', toggleCode);
 /*----- functions -----*/
 init();
 function init() {
-  // Initialize state variables
   turn = 1;
   curGuess = [];
   code = generateCode();
 
-  // Render secret code
   renderCode();
-
-  // Render current turn
   renderTurn();
 }
 
