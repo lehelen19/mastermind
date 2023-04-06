@@ -46,9 +46,12 @@ Feel free to submit a pull request if you would like to suggest any changes.
 - Add a color-blind option
 - Hide the game instructions in a modal that opens upon click
 - Add an animated background and/or other style enhancements; refactor for accessibility and responsiveness
+- Allow the player to submit a code to be cracked with an algorithm
 
 ## Resources
 
 - [A great README.md template](https://github.com/othneildrew/Best-README-Template)
 - [CSS Animation Library](https://animate.style/)
+- [CSS Buttons (and other)](https://www.csswand.dev/)
 - [CSS Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) (just because it's always helpful!)
+- [Accessible Colors](http://web-accessibility.carnegiemuseums.org/design/color/)
