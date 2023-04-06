@@ -48,9 +48,7 @@ deleteBtn.addEventListener('click', function () {
 });
 
 clearBtn.addEventListener('click', function () {
-  if (curGuess.length > 0) {
-    curGuess = [];
-  }
+  clearGuess();
   renderCurGuess();
 });
 
@@ -82,6 +80,12 @@ function generateCode() {
     code.push(randInt);
   }
   return code;
+}
+
+function clearGuess() {
+  if (curGuess.length > 0) {
+    curGuess = [];
+  }
 }
 
 function deleteGuess() {
