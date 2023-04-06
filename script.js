@@ -94,15 +94,7 @@ function clearErrorMsg() {
   errorMsgEl.classList.remove('animate__animated', 'animate__headShake');
 }
 
-function handleGuessSubmit() {
-  clearErrorMsg();
-
-  if (curGuess.length !== GUESS_LEN) {
-    errorMsgEl.classList.add('animate__animated', 'animate__headShake');
-    errorMsgEl.innerText = 'Your guess must be four colors!';
-    return;
-  }
-
+function checkForMatches() {
   let codeCopy = [...code];
   let exactMatch = 0;
   let closeMatch = 0;
@@ -123,6 +115,20 @@ function handleGuessSubmit() {
     }
   });
 
+  return [exactMatch, closeMatch];
+}
+
+function handleGuessSubmit() {
+  clearErrorMsg();
+
+  // Check if guess is correct length
+  if (curGuess.length !== GUESS_LEN) {
+    errorMsgEl.classList.add('animate__animated', 'animate__headShake');
+    errorMsgEl.innerText = 'Your guess must be four colors!';
+    return;
+  }
+
+  [exactMatch, closeMatch] = checkForMatches();
   renderMiniboard(exactMatch, closeMatch);
 
   if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
