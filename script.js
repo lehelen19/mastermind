@@ -246,7 +246,6 @@ function resetBoard() {
   clearBoards();
   enableButtons();
   clearResultMsg();
-
   choiceContainerEl.addEventListener('click', updateGuess);
 }
 
@@ -266,7 +265,7 @@ function updateGuess(e) {
 }
 
 function renderCode() {
-  Object.values(code).forEach(function (guess, i) {
+  code.forEach(function (guess, i) {
     codeEls[i].style.backgroundColor = COLORS_MAP[guess];
   });
 }
