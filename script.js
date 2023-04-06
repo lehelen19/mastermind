@@ -103,9 +103,7 @@ function handleGuessSubmit() {
 
   // Disable game functionality if game is over
   if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
-    deleteBtn.disabled = true;
-    clearBtn.disabled = true;
-    submitBtn.disabled = true;
+    disableButtons();
     choiceContainerEl.removeEventListener('click', updateGuess);
   }
 
@@ -229,6 +227,12 @@ function enableButtons() {
   deleteBtn.disabled = false;
   clearBtn.disabled = false;
   submitBtn.disabled = false;
+}
+
+function disableButtons() {
+  deleteBtn.disabled = true;
+  clearBtn.disabled = true;
+  submitBtn.disabled = true;
 }
 
 function clearResultMsg() {
