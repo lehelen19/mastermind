@@ -217,14 +217,18 @@ function clearTurnHighlight() {
   guessContainerEls[turn - 1].style.backgroundColor = 'transparent';
 }
 
-function resetBoard() {
-  clearTurnHighlight();
+function clearBoards() {
   prevGuessesEls.forEach(function (div) {
     div.style.backgroundColor = 'transparent';
   });
   miniboardEls.forEach(function (div) {
     div.style.backgroundColor = 'lightgray';
   });
+}
+
+function resetBoard() {
+  clearTurnHighlight();
+  clearBoards();
 
   deleteBtn.disabled = false;
   clearBtn.disabled = false;
