@@ -232,17 +232,20 @@ function enableButtons() {
   submitBtn.disabled = false;
 }
 
-function resetBoard() {
-  clearTurnHighlight();
-  clearBoards();
-  enableButtons();
-
+function clearResultMsg() {
   resultMsgEl.innerText = '';
   resultMsgEl.classList.remove(
     'animate__animated',
     'animate__jackInTheBox',
     'animate__zoomIn'
   );
+}
+
+function resetBoard() {
+  clearTurnHighlight();
+  clearBoards();
+  enableButtons();
+  clearResultMsg();
 
   choiceContainerEl.addEventListener('click', updateGuess);
 }
