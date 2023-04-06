@@ -42,10 +42,8 @@ const codeEls = [
 /*----- event listeners -----*/
 choiceContainerEl.addEventListener('click', updateGuess);
 
-deleteBtn.addEventListener('click', function (e) {
-  if (curGuess.length > 0) {
-    curGuess.pop();
-  }
+deleteBtn.addEventListener('click', function () {
+  deleteGuess();
   renderCurGuess();
 });
 
@@ -84,6 +82,12 @@ function generateCode() {
     code.push(randInt);
   }
   return code;
+}
+
+function deleteGuess() {
+  if (curGuess.length > 0) {
+    curGuess.pop();
+  }
 }
 
 function handleGuessSubmit() {
