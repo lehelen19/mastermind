@@ -22,6 +22,7 @@ const resultMsgEl = document.querySelector('.result-msg');
 const guessContainerEls = [...document.querySelectorAll('.guess-container')];
 const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
+const miniboardEl = [...document.querySelectorAll('.miniboard')];
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
 const prevGuessesEls = [
   ...document.querySelectorAll('.colors-container > div'),
@@ -128,16 +129,20 @@ function renderLoss() {
   resultMsgEl.classList.add('animate__animated', 'animate__zoomIn');
 }
 
+function renderErrorMsg() {
+  errorMsgEl.classList.add('animate__animated', 'animate__headShake');
+  errorMsgEl.innerText = 'Your guess must be four colors!';
+}
+
 function handleGuessSubmit() {
   clearErrorMsg();
 
-  // Check if guess is correct length
   if (curGuess.length !== GUESS_LEN) {
-    errorMsgEl.classList.add('animate__animated', 'animate__headShake');
-    errorMsgEl.innerText = 'Your guess must be four colors!';
+    renderErrorMsg();
     return;
   }
 
+  // Render game logic
   [exactMatch, closeMatch] = checkForMatches();
   renderMiniboard(exactMatch, closeMatch);
 
