@@ -18,13 +18,11 @@ let curGuess;
 let code;
 
 /*----- cached elements  -----*/
-const gameboardEl = document.getElementById('gameboard');
 const errorMsgEl = document.querySelector('.error-msg');
 const resultMsgEl = document.querySelector('.result-msg');
 const guessContainerEls = [...document.querySelectorAll('.guess-container')];
 const turnEl = document.getElementById('turn');
 const choiceContainerEl = document.getElementById('choice-container');
-const choiceEls = document.querySelectorAll('#choice-container > div');
 const miniboardEls = [...document.querySelectorAll('.miniboard > div')];
 const prevGuessesEls = [
   ...document.querySelectorAll('.colors-container > div'),
