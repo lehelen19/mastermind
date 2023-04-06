@@ -89,9 +89,13 @@ function deleteGuess() {
   }
 }
 
-function handleGuessSubmit() {
+function clearErrorMsg() {
   errorMsgEl.innerText = '';
   errorMsgEl.classList.remove('animate__animated', 'animate__headShake');
+}
+
+function handleGuessSubmit() {
+  clearErrorMsg();
 
   if (curGuess.length !== GUESS_LEN) {
     errorMsgEl.classList.add('animate__animated', 'animate__headShake');
