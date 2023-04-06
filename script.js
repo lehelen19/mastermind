@@ -59,6 +59,7 @@ showBtn.addEventListener('click', toggleCode);
 
 /*----- functions -----*/
 init();
+
 function init() {
   turn = 1;
   curGuess = [];
@@ -89,6 +90,16 @@ function clearGuess() {
   }
 }
 
+function updateGuess(e) {
+  if (e.target.id || curGuess.length === GUESS_LEN) {
+    return;
+  }
+  if (curGuess.length < GUESS_LEN) {
+    curGuess.push(Number(e.target.dataset.index));
+    renderCurGuess();
+  }
+}
+
 function handleGuessSubmit() {
   clearErrorMsg();
 
@@ -97,17 +108,14 @@ function handleGuessSubmit() {
     return;
   }
 
-  // Render game logic
   [exactMatch, closeMatch] = checkForMatches();
   renderMiniboard(exactMatch, closeMatch);
 
-  // Disable game functionality if game is over
   if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
     disableButtons();
     choiceContainerEl.removeEventListener('click', updateGuess);
   }
 
-  // Render win/loss messages
   if (exactMatch === GUESS_LEN) {
     renderWin();
     return;
@@ -116,10 +124,8 @@ function handleGuessSubmit() {
     return;
   }
 
-  // Clear player guess
   curGuess = [];
 
-  // Render next turn
   turn += 1;
   renderTurn();
 }
@@ -199,6 +205,22 @@ function renderCurGuess() {
   });
 }
 
+function renderCode() {
+  code.forEach(function (guess, i) {
+    codeEls[i].style.backgroundColor = COLORS_MAP[guess];
+  });
+}
+
+function toggleCode() {
+  if (codeBox.style.visibility === 'visible') {
+    codeBox.style.visibility = 'hidden';
+    showBtn.innerText = 'Show Code';
+  } else {
+    codeBox.style.visibility = 'visible';
+    showBtn.innerText = 'Hide Code';
+  }
+}
+
 function renderTurn() {
   if (turn > 1) {
     guessContainerEls[turn - 2].style.backgroundColor = 'transparent';
@@ -256,30 +278,4 @@ function resetGame() {
   clearErrorMsg();
   resetBoard();
   init();
-}
-
-function updateGuess(e) {
-  if (e.target.id || curGuess.length === GUESS_LEN) {
-    return;
-  }
-  if (curGuess.length < GUESS_LEN) {
-    curGuess.push(Number(e.target.dataset.index));
-    renderCurGuess();
-  }
-}
-
-function renderCode() {
-  code.forEach(function (guess, i) {
-    codeEls[i].style.backgroundColor = COLORS_MAP[guess];
-  });
-}
-
-function toggleCode() {
-  if (codeBox.style.visibility === 'visible') {
-    codeBox.style.visibility = 'hidden';
-    showBtn.innerText = 'Show Code';
-  } else {
-    codeBox.style.visibility = 'visible';
-    showBtn.innerText = 'Hide Code';
-  }
 }
