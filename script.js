@@ -85,7 +85,7 @@ function generateCode() {
     const randInt = Math.floor(Math.random() * 6);
     code.push(randInt);
   }
-  return { ...code };
+  return code;
 }
 
 function handleGuessSubmit() {
@@ -98,7 +98,7 @@ function handleGuessSubmit() {
     return;
   }
 
-  let codeCopy = { ...code };
+  let codeCopy = [...code];
   let exactMatch = 0;
   let closeMatch = 0;
 
@@ -110,12 +110,11 @@ function handleGuessSubmit() {
     }
   });
 
-  const codeValues = Object.values(codeCopy);
   curGuess.forEach(function (guess, i) {
-    const index = codeValues.indexOf(guess);
+    const index = codeCopy.indexOf(guess);
     if (guess > -1 && index > -1) {
       closeMatch += 1;
-      codeValues[index] = -1;
+      codeCopy[index] = -1;
     }
   });
 
