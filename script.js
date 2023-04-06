@@ -212,10 +212,13 @@ function renderTurn() {
   turnEl.innerText = ' ' + turn;
 }
 
-function resetBoard() {
+function clearTurnHighlight() {
   guessContainerEls[turn - 1].style.border = 'none';
   guessContainerEls[turn - 1].style.backgroundColor = 'transparent';
+}
 
+function resetBoard() {
+  clearTurnHighlight();
   prevGuessesEls.forEach(function (div) {
     div.style.backgroundColor = 'transparent';
   });
