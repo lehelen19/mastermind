@@ -226,13 +226,16 @@ function clearBoards() {
   });
 }
 
-function resetBoard() {
-  clearTurnHighlight();
-  clearBoards();
-
+function enableButtons() {
   deleteBtn.disabled = false;
   clearBtn.disabled = false;
   submitBtn.disabled = false;
+}
+
+function resetBoard() {
+  clearTurnHighlight();
+  clearBoards();
+  enableButtons();
 
   resultMsgEl.innerText = '';
   resultMsgEl.classList.remove(
