@@ -118,6 +118,16 @@ function checkForMatches() {
   return [exactMatch, closeMatch];
 }
 
+function renderWin() {
+  resultMsgEl.innerText = "You win! You're a mastermind 🧐";
+  resultMsgEl.classList.add('animate__animated', 'animate__jackInTheBox');
+}
+
+function renderLoss() {
+  resultMsgEl.innerText = 'Maybe next time... 😪';
+  resultMsgEl.classList.add('animate__animated', 'animate__zoomIn');
+}
+
 function handleGuessSubmit() {
   clearErrorMsg();
 
@@ -131,19 +141,20 @@ function handleGuessSubmit() {
   [exactMatch, closeMatch] = checkForMatches();
   renderMiniboard(exactMatch, closeMatch);
 
+  // Disable game functionality if game is over
   if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
     deleteBtn.disabled = true;
     clearBtn.disabled = true;
     submitBtn.disabled = true;
     choiceContainerEl.removeEventListener('click', updateGuess);
   }
+
+  // Render win/loss messages
   if (exactMatch === GUESS_LEN) {
-    resultMsgEl.innerText = "You win! You're a mastermind 🧐";
-    resultMsgEl.classList.add('animate__animated', 'animate__jackInTheBox');
+    renderWin();
     return;
   } else if (turn === TURN_MAX) {
-    resultMsgEl.innerText = 'Maybe next time... 😪';
-    resultMsgEl.classList.add('animate__animated', 'animate__zoomIn');
+    renderLoss();
     return;
   }
 
