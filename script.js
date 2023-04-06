@@ -78,21 +78,53 @@ function generateCode() {
   return code;
 }
 
-function clearGuess() {
-  if (curGuess.length > 0) {
-    curGuess = [];
-  }
-}
-
 function deleteGuess() {
   if (curGuess.length > 0) {
     curGuess.pop();
   }
 }
 
-function clearErrorMsg() {
-  errorMsgEl.innerText = '';
-  errorMsgEl.classList.remove('animate__animated', 'animate__headShake');
+function clearGuess() {
+  if (curGuess.length > 0) {
+    curGuess = [];
+  }
+}
+
+function handleGuessSubmit() {
+  clearErrorMsg();
+
+  if (curGuess.length !== GUESS_LEN) {
+    renderErrorMsg();
+    return;
+  }
+
+  // Render game logic
+  [exactMatch, closeMatch] = checkForMatches();
+  renderMiniboard(exactMatch, closeMatch);
+
+  // Disable game functionality if game is over
+  if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
+    deleteBtn.disabled = true;
+    clearBtn.disabled = true;
+    submitBtn.disabled = true;
+    choiceContainerEl.removeEventListener('click', updateGuess);
+  }
+
+  // Render win/loss messages
+  if (exactMatch === GUESS_LEN) {
+    renderWin();
+    return;
+  } else if (turn === TURN_MAX) {
+    renderLoss();
+    return;
+  }
+
+  // Clear player guess
+  curGuess = [];
+
+  // Render next turn
+  turn += 1;
+  renderTurn();
 }
 
 function checkForMatches() {
@@ -134,41 +166,9 @@ function renderErrorMsg() {
   errorMsgEl.innerText = 'Your guess must be four colors!';
 }
 
-function handleGuessSubmit() {
-  clearErrorMsg();
-
-  if (curGuess.length !== GUESS_LEN) {
-    renderErrorMsg();
-    return;
-  }
-
-  // Render game logic
-  [exactMatch, closeMatch] = checkForMatches();
-  renderMiniboard(exactMatch, closeMatch);
-
-  // Disable game functionality if game is over
-  if (exactMatch === GUESS_LEN || turn === TURN_MAX) {
-    deleteBtn.disabled = true;
-    clearBtn.disabled = true;
-    submitBtn.disabled = true;
-    choiceContainerEl.removeEventListener('click', updateGuess);
-  }
-
-  // Render win/loss messages
-  if (exactMatch === GUESS_LEN) {
-    renderWin();
-    return;
-  } else if (turn === TURN_MAX) {
-    renderLoss();
-    return;
-  }
-
-  // Clear player guess
-  curGuess = [];
-
-  // Render next turn
-  turn += 1;
-  renderTurn();
+function clearErrorMsg() {
+  errorMsgEl.innerText = '';
+  errorMsgEl.classList.remove('animate__animated', 'animate__headShake');
 }
 
 function renderMiniboard(exactCount, closeCount) {
