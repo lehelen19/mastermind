@@ -253,6 +253,7 @@ function resetBoard() {
 }
 
 function resetGame() {
+  clearErrorMsg();
   resetBoard();
   init();
 }
