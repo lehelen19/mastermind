@@ -1,5 +1,4 @@
 /*----- constants -----*/
-const CHOICES = [0, 1, 2, 3, 4, 5];
 const GUESS_LEN = 4;
 const TURN_MAX = 12;
 const COLORS_MAP = {
