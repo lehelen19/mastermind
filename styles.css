@@ -168,15 +168,32 @@ section {
   margin: 2px;
 }
 
+.flex-btn-sm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-sm {
+  padding: 0 35px;
+}
+
+.flex-btn-lg {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-lg {
+  padding: 0 35px;
+}
+
 button {
   color: white;
   background-color: var(--third-color);
   border: 1px solid var(--second-color);
-  border-radius: 4px;
-  margin: 0 3px 10px;
-  padding: 0 3.5vmin;
+  border-radius: 4px;  
+  margin: 5px;
   cursor: pointer;
-  height: 32px;
+  height: 36px;
   font-size: 1.2rem;
   transition: all 0.2s ease-in-out;
 }
